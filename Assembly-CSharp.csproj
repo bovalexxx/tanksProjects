@@ -58,9 +58,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\SmoothFollow2D.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\HPBarScript.cs" />
     <Compile Include="Assets\Scripts\TowerController.cs" />
     <Compile Include="Assets\Scripts\TankController.cs" />
-    <Compile Include="Assets\Scripts\HPBarScript.cs" />
+    <Compile Include="Assets\Scripts\EnemyFollow.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
