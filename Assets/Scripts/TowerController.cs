@@ -6,12 +6,7 @@ public class TowerController : MonoBehaviour
 {
     public GameObject bullet;
     public int bulletSpeed;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
@@ -23,8 +18,7 @@ public class TowerController : MonoBehaviour
         {
             GameObject projectile = Instantiate(bullet, transform.GetChild(0));
             projectile.transform.SetParent(null);
-            projectile.GetComponent<Rigidbody2D>().AddForce(transform.up*bulletSpeed
-                );
+            projectile.GetComponent<Rigidbody2D>().AddForce(transform.up*bulletSpeed);
         }
     }
 }

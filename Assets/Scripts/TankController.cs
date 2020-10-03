@@ -60,7 +60,7 @@ public class TankController : MonoBehaviour
         if (moveForward)
         {
             moveSpeed = (moveSpeed < moveSpeedMax) ? moveSpeed + moveAcceleration : moveSpeedMax;
-            GetComponent<Rigidbody2D>().AddForce(transform.up*moveSpeed*2);
+            GetComponent<Rigidbody2D>().AddForce(transform.up * moveSpeed * 2);
         }
         else
         {
