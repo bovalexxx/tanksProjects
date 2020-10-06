@@ -6,6 +6,8 @@ TagManager:
   tags:
   - MainTank
   - FirstAid
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
