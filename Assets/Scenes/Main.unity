@@ -1798,9 +1798,10 @@ GameObject:
   - component: {fileID: 730921205}
   - component: {fileID: 730921204}
   - component: {fileID: 730921207}
+  - component: {fileID: 730921208}
   m_Layer: 0
   m_Name: TankEnemyWtthSpots
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1885,6 +1886,20 @@ MonoBehaviour:
   - {fileID: 1725732663}
   - {fileID: 2078973635}
   target: {fileID: 0}
+--- !u!114 &730921208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730921203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25856692642f0254c81a793d531036b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyHP: 100
+  other: {fileID: 730921203}
 --- !u!1 &772828485
 GameObject:
   m_ObjectHideFlags: 0
