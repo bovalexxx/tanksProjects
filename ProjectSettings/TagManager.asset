@@ -8,6 +8,8 @@ TagManager:
   - FirstAid
   - Enemy
   - Bullet
+  - RocketBullet
+  - BonusRocket
   layers:
   - Default
   - TransparentFX
