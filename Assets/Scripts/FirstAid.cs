@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class FirstAid : MonoBehaviour
 {
 	public bool NeedAdd = false;
+	public GameObject other;
 
-	void OnCollisionEnter(Collision col)
+	private void OnCollisionEnter2D(Collision2D col)
 	{
-		if (col.gameObject.tag == "Player")
+		if (col.gameObject.tag == "FirstAid")
 		{
-			Destroy(gameObject, 7f);
+			Destroy(other);
 			NeedAdd = true;
 		}
 	}
