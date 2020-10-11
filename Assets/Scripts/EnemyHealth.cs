@@ -22,5 +22,9 @@ public class EnemyHealth : MonoBehaviour
         {
             EnemyHP = EnemyHP - 25;
         }
+        if (col.gameObject.tag == "RocketBullet")
+        {
+            EnemyHP = EnemyHP - 100;
+        }
     }
 }

@@ -1,18 +1,39 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyTowerRotate : MonoBehaviour
 {
-    public Transform target;
+    public float speed;
 
-    void FixedUpdate()
+    private Transform target;
+
+    public GameObject Enemybullet;
+    public int EnemybulletSpeed;
+
+    void Start()
     {
-        var newRotation = Quaternion.LookRotation(transform.position - target.position, Vector3.forward);
-        Vector3 direction = target.transform.position - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 16);
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        StartCoroutine(BulletPiu());
+    }
+
+    IEnumerator BulletPiu()
+    {
+        yield return new WaitForSeconds(5f);
+        GameObject projectile = Instantiate(Enemybullet, transform.GetChild(0));
+        projectile.transform.SetParent(null);
+        projectile.GetComponent<Rigidbody2D>().AddForce(transform.up * EnemybulletSpeed);
+        StartCoroutine(BulletPiu());
+    }
+
+    void Update()
+    {
+
+            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            var newRotation = Quaternion.LookRotation(transform.position - target.position, Vector3.forward);
+            newRotation.x = 0.0f;
+            newRotation.y = 0.0f;
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 16);       
     }
 }
 

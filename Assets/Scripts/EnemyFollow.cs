@@ -20,7 +20,7 @@ public class EnemyFollow : MonoBehaviour
         var newRotation = Quaternion.LookRotation(transform.position - target.position, Vector3.forward);
         newRotation.x = 0.0f;
         newRotation.y = 0.0f;
-        transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 8);
+        transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 6);
 
     }
 }
