@@ -1235,7 +1235,6 @@ GameObject:
   - component: {fileID: 605193264}
   - component: {fileID: 605193265}
   - component: {fileID: 605193266}
-  - component: {fileID: 605193267}
   m_Layer: 0
   m_Name: SmallTowerC
   m_TagString: Untagged
@@ -1325,18 +1324,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 9031115298694085824, guid: 29610125b35b9eb4884eccf10d9a2fbd, type: 3}
   bulletSpeed: 2000
---- !u!114 &605193267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 605193263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79fc6a9ffc5f3ad44ba166845f7f6335, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   RocketBullet2: {fileID: 954794518779683980, guid: 54f42e81f82492b4195806be8a95be8d, type: 3}
   RocketbulletSpeed: 2000
 --- !u!1 &607031624

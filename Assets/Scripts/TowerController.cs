@@ -6,6 +6,8 @@ public class TowerController : MonoBehaviour
 {
     public GameObject bullet;
     public int bulletSpeed;
+    public GameObject RocketBullet2;
+    public int RocketbulletSpeed;
 
     void Update()
     {
@@ -19,6 +21,20 @@ public class TowerController : MonoBehaviour
             GameObject projectile = Instantiate(bullet, transform.GetChild(0));
             projectile.transform.SetParent(null);
             projectile.GetComponent<Rigidbody2D>().AddForce(transform.up*bulletSpeed);
+        }
+
+        BonusRocket target = (BonusRocket)FindObjectOfType(typeof(BonusRocket));
+        BonusRocket BonusRocket = target.GetComponent<BonusRocket>();
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            if (BonusRocket.RocketHave >= 1)
+            {
+                GameObject projectile = Instantiate(RocketBullet2, transform.GetChild(0));
+                projectile.transform.SetParent(null);
+                projectile.GetComponent<Rigidbody2D>().AddForce(transform.up * RocketbulletSpeed);
+                BonusRocket.RocketHave = BonusRocket.RocketHave - 1;
+            }
         }
     }
 }
