@@ -12,7 +12,7 @@ public class RocketBullet : MonoBehaviour
         BonusRocket target = (BonusRocket)FindObjectOfType(typeof(BonusRocket));
         BonusRocket BonusRocket = target.GetComponent<BonusRocket>();
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire2"))
         {
             if (BonusRocket.RocketHave >= 1)
             {
