@@ -20,7 +20,7 @@ public class EnemyTowerRotate : MonoBehaviour
     IEnumerator BulletPiu()
     {
         yield return new WaitForSeconds(5f);
-        GameObject projectile = Instantiate(Enemybullet, transform.GetChild(0));
+        GameObject projectile = Instantiate(Enemybullet, transform.GetChild(2));
         projectile.transform.SetParent(null);
         projectile.GetComponent<Rigidbody2D>().AddForce(transform.up * EnemybulletSpeed);
         StartCoroutine(BulletPiu());

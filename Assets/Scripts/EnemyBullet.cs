@@ -9,10 +9,6 @@ public class EnemyBullet : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D col)
 	{
-		if (col.gameObject.tag == "EnemyBullet")
-		{
-			
-		}
-		Destroy(other, 1);
+         Destroy(other);
 	}
 }
