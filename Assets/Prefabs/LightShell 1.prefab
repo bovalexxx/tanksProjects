@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3855270635598388849}
   - component: {fileID: 3697547627824123499}
   - component: {fileID: 6066810467246943548}
+  - component: {fileID: -3944123757575440502}
   m_Layer: 0
   m_Name: LightShell 1
   m_TagString: EnemyBullet
@@ -131,3 +132,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.35, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &-3944123757575440502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4183189921517551923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f5feccd639e50245ae9e52c671fe87b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  other: {fileID: 4183189921517551923}

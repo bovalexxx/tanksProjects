@@ -9,6 +9,7 @@ public class HPBarScript : MonoBehaviour
     public Slider slider;
     public Text HP;
     public string HealthSTR;
+    public GameObject other;
 
     void FixedUpdate()
     {
@@ -20,8 +21,14 @@ public class HPBarScript : MonoBehaviour
         if (FirstAid.NeedAdd == true)
         {
             HealthINT = 100;
+            FirstAid.NeedAdd = false;
+        }
+        TakeDamage target2 = (TakeDamage)FindObjectOfType(typeof(TakeDamage));
+        TakeDamage TakeDamage = target2.GetComponent<TakeDamage>();
+        if (TakeDamage.TakeDamageINT >= 1)
+        {
+            HealthINT -= 25;
+            TakeDamage.TakeDamageINT -= 1;
         }
     }
-
-
 }

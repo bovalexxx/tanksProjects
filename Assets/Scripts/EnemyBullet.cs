@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyBullet : MonoBehaviour
 {
@@ -8,10 +9,10 @@ public class EnemyBullet : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D col)
 	{
-		Destroy(other);
-		if (col.gameObject.tag == "Enemy")
+		if (col.gameObject.tag == "EnemyBullet")
 		{
 			
 		}
+		Destroy(other, 1);
 	}
 }
