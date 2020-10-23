@@ -12,7 +12,7 @@ public class BonusRocket : MonoBehaviour
 		if (col.gameObject.tag == "BonusRocket")
 		{
 			Destroy(otherObj);
-			RocketHave = RocketHave + 1;
+			RocketHave ++;
 		}
 	}
 }

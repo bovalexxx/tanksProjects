@@ -10,6 +10,9 @@ TagManager:
   - Bullet
   - RocketBullet
   - BonusRocket
+  - EnemyBullet
+  - BrokeBlock
+  - Shield
   layers:
   - Default
   - TransparentFX

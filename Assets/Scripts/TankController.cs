@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TankController : MonoBehaviour
 {
+    [Header("Movement")]
     public GameObject trackLeft;
     public GameObject trackRight;
 
@@ -27,6 +29,14 @@ public class TankController : MonoBehaviour
     float rotateAcceleration = 4f;
     float rotateDeceleration = 10f;
     float rotateSpeedMax = 130f;
+    //Other
+    [Header("Setup")]
+    public int health = 100;
+    public int rockets = 0;
+    public bool shields = false;
+    [Header("UI")]
+    public Slider healthSlider;
+    public Text healthText;
 
     void Update()
     {
@@ -103,5 +113,49 @@ public class TankController : MonoBehaviour
     {
         trackLeft.GetComponent<Animator>().SetBool("isMoving", false);
         trackRight.GetComponent<Animator>().SetBool("isMoving", false);
+    }
+    //UI
+    void FixedUpdate()
+    {
+        healthSlider.value = health;
+        healthText.text = health.ToString();
+    }
+    //Colliders & Triggers
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "FirstAid")
+        {
+            Destroy(col.gameObject);
+            health += 20;
+            if (health > 100)
+                health = 100;
+        }
+        if (col.gameObject.tag == "BonusRocket")
+        {
+            Destroy(col.gameObject);
+            rockets++;
+        }
+        if (col.gameObject.tag == "Shield")
+        {
+            Destroy(col.gameObject);
+            shields = true;
+            StartCoroutine("shieldStart");
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "EnemyBullet")
+        {
+            if (shields == false)
+            {
+            health -= 20;
+            }
+        }
+    }
+
+    IEnumerator shieldStart()
+    {
+        yield return new WaitForSeconds(10f);
+        shields = false;
     }
 }

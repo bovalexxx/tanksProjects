@@ -10,5 +10,7 @@ public class EnemyBullet : MonoBehaviour
 	private void OnCollisionEnter2D(Collision2D col)
 	{
          Destroy(other);
+		if (col.gameObject.tag == "BrokeBlock")
+			Destroy(col.gameObject);
 	}
 }

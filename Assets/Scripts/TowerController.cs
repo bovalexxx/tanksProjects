@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
+    public TankController tankController;
     public GameObject bullet;
     public int bulletSpeed;
-    public GameObject RocketBullet2;
-    public int RocketbulletSpeed;
+    public GameObject rocketBullet;
+    public int rocketbulletSpeed;
 
     void Update()
     {
@@ -16,6 +17,7 @@ public class TowerController : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle-90, Vector3.forward);
 
+        //Bullets
         if(Input.GetButtonDown("Fire1"))
         {
             GameObject projectile = Instantiate(bullet, transform.GetChild(0));
@@ -23,17 +25,15 @@ public class TowerController : MonoBehaviour
             projectile.GetComponent<Rigidbody2D>().AddForce(transform.up*bulletSpeed);
         }
 
-        BonusRocket target = (BonusRocket)FindObjectOfType(typeof(BonusRocket));
-        BonusRocket BonusRocket = target.GetComponent<BonusRocket>();
-
+        //Rockets
         if (Input.GetButtonDown("Fire2"))
         {
-            if (BonusRocket.RocketHave >= 1)
+            if (tankController.rockets >= 1)
             {
-                GameObject projectile = Instantiate(RocketBullet2, transform.GetChild(0));
+                GameObject projectile = Instantiate(rocketBullet, transform.GetChild(0));
                 projectile.transform.SetParent(null);
-                projectile.GetComponent<Rigidbody2D>().AddForce(transform.up * RocketbulletSpeed);
-                BonusRocket.RocketHave = BonusRocket.RocketHave - 1;
+                projectile.GetComponent<Rigidbody2D>().AddForce(transform.up * rocketbulletSpeed);
+                tankController.rockets--;
             }
         }
     }
