@@ -29,10 +29,15 @@ public class TankController : MonoBehaviour
     float rotateAcceleration = 4f;
     float rotateDeceleration = 10f;
     float rotateSpeedMax = 130f;
+
+    public string useFirstAid;
+    public string useShield;
     //Other
     [Header("Setup")]
     public int health = 100;
     public int rockets = 0;
+    public int shieldsHave = 0;
+    public int firstAid = 0;
     public bool shields = false;
     [Header("UI")]
     public Slider healthSlider;
@@ -40,7 +45,7 @@ public class TankController : MonoBehaviour
 
     void Update()
     {
-
+        
         rotateLeft = (Input.GetKeyDown(keyRotateLeft)) ? true : rotateLeft;
         rotateLeft = (Input.GetKeyUp(keyRotateLeft)) ? false : rotateLeft;
         if (rotateLeft)
@@ -101,6 +106,24 @@ public class TankController : MonoBehaviour
             trackStop();
         }
 
+        if (Input.GetKeyDown(useFirstAid))
+        {
+            if (firstAid >= 1)
+            {
+                health += 20;
+                if (health > 100)
+                    health = 100;
+                firstAid--;
+            }
+        }
+        if (Input.GetKeyDown(useShield))
+        {
+            if (shieldsHave >= 1)
+            {
+                StartCoroutine("shieldStart");
+                shieldsHave--;
+            }
+        }
     }
 
     void trackStart()
@@ -126,9 +149,7 @@ public class TankController : MonoBehaviour
         if (col.gameObject.tag == "FirstAid")
         {
             Destroy(col.gameObject);
-            health += 20;
-            if (health > 100)
-                health = 100;
+            firstAid++;
         }
         if (col.gameObject.tag == "BonusRocket")
         {
@@ -138,8 +159,7 @@ public class TankController : MonoBehaviour
         if (col.gameObject.tag == "Shield")
         {
             Destroy(col.gameObject);
-            shields = true;
-            StartCoroutine("shieldStart");
+            shieldsHave++;
         }
     }
     private void OnCollisionEnter2D(Collision2D col)
@@ -155,6 +175,7 @@ public class TankController : MonoBehaviour
 
     IEnumerator shieldStart()
     {
+        shields = true;
         yield return new WaitForSeconds(10f);
         shields = false;
     }
