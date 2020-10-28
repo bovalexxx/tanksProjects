@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
     public int EnemyHP = 100;
+    public Slider slider;
 
     public GameObject other;
 
@@ -14,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Destroy(other);
         }
+        slider.value = EnemyHP;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -28,3 +31,4 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 }
+

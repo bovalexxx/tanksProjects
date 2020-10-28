@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\TankController.cs" />
     <Compile Include="Assets\Scripts\FireBorders.cs" />
     <Compile Include="Assets\Scripts\EnemyBullet.cs" />
+    <Compile Include="Assets\Scripts\EnemyHealthBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

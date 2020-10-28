@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class EnemyAI : MonoBehaviour
     public bool chooseRandom = true;
     public bool isIdle;
     public bool isFollowTarget;
+    public bool shieldsActive = false;
+
+    public int EnemyHP = 100;
+    public Slider slider;
+
+    public GameObject other;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +30,18 @@ public class EnemyAI : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position) > 5)
             FollowTarget();
         PlayerDistance();
+
+        if (EnemyHP <= 0)
+        {
+            Destroy(other);
+        }
+        slider.value = EnemyHP;
     }
     void PlayerDistance()
     {
         if (Vector3.Distance(transform.position, player.transform.position) < 30)
         {
-            if(Vector3.Distance(transform.position, player.transform.position) > 5)
+            if (Vector3.Distance(transform.position, player.transform.position) > 5)
                 target = player.transform.position;
             chooseRandom = false;
         }
@@ -56,11 +69,51 @@ public class EnemyAI : MonoBehaviour
     {
 
     }
-    IEnumerator ChooseRandomTarget()
+
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        yield return new WaitForSeconds(Random.Range(1, 5));
-        if(chooseRandom)
-            target = new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), 0);
-        StartCoroutine("ChooseRandomTarget");
+        if (col.gameObject.tag == "Bullet")
+        {
+            if (shieldsActive == false)
+            {
+                EnemyHP = EnemyHP - 25;
+            }
+        }
+        if (col.gameObject.tag == "RocketBullet")
+        {
+            if(shieldsActive == false)
+            {
+                EnemyHP = EnemyHP - 100;
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "FirstAid")
+        {
+            Destroy(col.gameObject);
+            EnemyHP += 20;
+        }
+        if (col.gameObject.tag == "Shield")
+        {
+            Destroy(col.gameObject);
+            StartCoroutine("shieldStart");
+        }
+
+        IEnumerator shieldStart()
+        {
+            shieldsActive = true;
+            yield return new WaitForSeconds(10f);
+            shieldsActive = false;
+        }
+
+        IEnumerator ChooseRandomTarget()
+        {
+            yield return new WaitForSeconds(Random.Range(1, 5));
+            if (chooseRandom)
+                target = new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), 0);
+            StartCoroutine("ChooseRandomTarget");
+        }
     }
 }
