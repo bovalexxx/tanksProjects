@@ -100,20 +100,20 @@ public class EnemyAI : MonoBehaviour
             Destroy(col.gameObject);
             StartCoroutine("shieldStart");
         }
+    }
 
-        IEnumerator shieldStart()
-        {
-            shieldsActive = true;
-            yield return new WaitForSeconds(10f);
-            shieldsActive = false;
-        }
+    private IEnumerator shieldStart()
+    {
+        shieldsActive = true;
+        yield return new WaitForSeconds(10f);
+        shieldsActive = false;
+    }
 
-        IEnumerator ChooseRandomTarget()
-        {
-            yield return new WaitForSeconds(Random.Range(1, 5));
-            if (chooseRandom)
-                target = new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), 0);
-            StartCoroutine("ChooseRandomTarget");
-        }
+    private IEnumerator ChooseRandomTarget()
+    {
+        yield return new WaitForSeconds(Random.Range(1, 5));
+        if (chooseRandom)
+            target = new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), 0);
+        StartCoroutine("ChooseRandomTarget");
     }
 }
