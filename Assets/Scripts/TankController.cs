@@ -36,6 +36,7 @@ public class TankController : MonoBehaviour
     //Other
     [Header("Setup")]
     public int health = 100;
+    public int bullets = 20;
     public int rockets = 0;
     public int shieldsHave = 0;
     public int firstAid = 0;
@@ -46,6 +47,7 @@ public class TankController : MonoBehaviour
     public Text RocketsText;
     public Text ShieldsText;
     public Text FirstAidText;
+    public Text BulletsText;
 
     void Start()
     {
@@ -154,6 +156,7 @@ public class TankController : MonoBehaviour
         RocketsText.text = rockets.ToString();
         ShieldsText.text = shieldsHave.ToString();
         FirstAidText.text = firstAid.ToString();
+        BulletsText.text = bullets.ToString();
     }
     //Colliders & Triggers
     private void OnTriggerEnter2D(Collider2D col)
@@ -172,6 +175,11 @@ public class TankController : MonoBehaviour
         {
             Destroy(col.gameObject);
             shieldsHave++;
+        }
+        if (col.gameObject.tag == "BonusBullets")
+        {
+            Destroy(col.gameObject);
+            bullets += 5;
         }
     }
     private void OnCollisionEnter2D(Collision2D col)

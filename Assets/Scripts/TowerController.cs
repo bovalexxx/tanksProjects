@@ -1,14 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TowerController : MonoBehaviour
 {
+    public GameObject tank;
+    public TankController script;
+
     public TankController tankController;
     public GameObject bullet;
     public int bulletSpeed;
     public GameObject rocketBullet;
     public int rocketbulletSpeed;
+
+    void Start()
+    {
+        script = tank.GetComponent<TankController>();
+    }
 
     void Update()
     {
@@ -20,9 +29,13 @@ public class TowerController : MonoBehaviour
         //Bullets
         if(Input.GetButtonDown("Fire1"))
         {
-            GameObject projectile = Instantiate(bullet, transform.GetChild(0));
-            projectile.transform.SetParent(null);
-            projectile.GetComponent<Rigidbody2D>().AddForce(transform.up*bulletSpeed);
+            if (script.bullets >= 1)
+            {
+                GameObject projectile = Instantiate(bullet, transform.GetChild(0));
+                projectile.transform.SetParent(null);
+                projectile.GetComponent<Rigidbody2D>().AddForce(transform.up * bulletSpeed);
+                script.bullets--;
+            }
         }
 
         //Rockets
