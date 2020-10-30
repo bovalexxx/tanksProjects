@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class EnemyAI : MonoBehaviour
 {
     private GameObject player;
+    public GameObject shieldObj;
+
     public Vector3 target;
     public int speed = 4;
     public bool chooseRandom = true;
@@ -22,6 +24,7 @@ public class EnemyAI : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         StartCoroutine("ChooseRandomTarget");
+        shieldObj.SetActive(false);
     }
 
     // Update is called once per frame
@@ -104,9 +107,11 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator shieldStart()
     {
+        shieldObj.SetActive(true);
         shieldsActive = true;
         yield return new WaitForSeconds(10f);
         shieldsActive = false;
+        shieldObj.SetActive(false);
     }
 
     private IEnumerator ChooseRandomTarget()

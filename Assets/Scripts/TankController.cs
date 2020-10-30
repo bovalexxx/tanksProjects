@@ -43,6 +43,9 @@ public class TankController : MonoBehaviour
     [Header("UI")]
     public Slider healthSlider;
     public Text healthText;
+    public Text RocketsText;
+    public Text ShieldsText;
+    public Text FirstAidText;
 
     void Start()
     {
@@ -148,6 +151,9 @@ public class TankController : MonoBehaviour
     {
         healthSlider.value = health;
         healthText.text = health.ToString();
+        RocketsText.text = rockets.ToString();
+        ShieldsText.text = shieldsHave.ToString();
+        FirstAidText.text = firstAid.ToString();
     }
     //Colliders & Triggers
     private void OnTriggerEnter2D(Collider2D col)
