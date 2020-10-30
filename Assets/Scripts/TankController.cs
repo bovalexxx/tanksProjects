@@ -8,6 +8,7 @@ public class TankController : MonoBehaviour
     [Header("Movement")]
     public GameObject trackLeft;
     public GameObject trackRight;
+    public GameObject shieldObj;
 
     public string keyMoveForward;
     public string keyMoveReverse;
@@ -42,6 +43,11 @@ public class TankController : MonoBehaviour
     [Header("UI")]
     public Slider healthSlider;
     public Text healthText;
+
+    void Start()
+    {
+        shieldObj.SetActive(false);
+    }
 
     void Update()
     {
@@ -175,8 +181,10 @@ public class TankController : MonoBehaviour
 
     IEnumerator shieldStart()
     {
+        shieldObj.SetActive(true);
         shields = true;
         yield return new WaitForSeconds(10f);
         shields = false;
+        shieldObj.SetActive(false);
     }
 }
