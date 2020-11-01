@@ -15862,6 +15862,85 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &455630104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 455630105}
+  - component: {fileID: 455630107}
+  - component: {fileID: 455630106}
+  m_Layer: 5
+  m_Name: CooldownText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &455630105
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455630104}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 47.04832}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 2.352416}
+  m_Children: []
+  m_Father: {fileID: 653023978}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 341.99, y: -217.47}
+  m_SizeDelta: {x: 116.01224, y: 78.558014}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &455630106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455630104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.41509432, b: 0.021448549, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 70
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 0
+--- !u!222 &455630107
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455630104}
+  m_CullTransparentMesh: 0
 --- !u!1 &455940147
 GameObject:
   m_ObjectHideFlags: 0
@@ -20780,11 +20859,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tank: {fileID: 1934202286}
   script: {fileID: 1934202288}
+  cooldownOn: 0
+  readyToFire: 1
   tankController: {fileID: 1934202288}
   bullet: {fileID: 9031115298694085824, guid: 29610125b35b9eb4884eccf10d9a2fbd, type: 3}
   bulletSpeed: 2000
   rocketBullet: {fileID: 954794518779683980, guid: 54f42e81f82492b4195806be8a95be8d, type: 3}
   rocketbulletSpeed: 2000
+  CooldownText: {fileID: 455630106}
 --- !u!1 &605245068
 GameObject:
   m_ObjectHideFlags: 0
@@ -22873,6 +22955,7 @@ RectTransform:
   - {fileID: 1129557502}
   - {fileID: 770061356}
   - {fileID: 1452283329}
+  - {fileID: 455630105}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
